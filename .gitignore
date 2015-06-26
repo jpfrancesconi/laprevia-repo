@@ -1,1 +1,3 @@
-directorio/*
+login/hooks/*
+login/platforms/*
+login/config.xml
