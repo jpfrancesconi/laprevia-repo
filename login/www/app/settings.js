@@ -62,7 +62,7 @@ drupalgap.settings.facebook = {
  *************/
 
 // App Title
-drupalgap.settings.title = 'La Previa FDD';
+drupalgap.settings.title = 'La Previa JP';
  
 // App Front Page
 drupalgap.settings.front = 'dashboard';
