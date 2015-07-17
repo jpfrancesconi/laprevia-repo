@@ -46,7 +46,7 @@ function galeria_de_usuarios_pageshow() {
             	var u = object.user; 
               	//items.push([l('<p style="border-radius: 100%;">'+ u.name +'</p>', 'perfil_de_usuario/' + u.uid)]);
               	//items.push([l('<img src='+ u.imagen.src +' style="border-radius: 100%;"></img>', 'perfil_de_usuario/' + u.uid)]);5
-                items.push([l('<img src='+ u.imagen.src +' style="border: solid 1px #FF0000; border-radius: 100%; width:100px; height:100px; z-index: -1;"></img><a href="#" style="position:absolute; left:5%; bottom:5%; background-color: white; font-size: 80%; text-decoration:none; color:#000000; border-radius: 20%;">&nbsp;'+ u.name +'&nbsp;</a>', 'perfil_de_usuario/' + u.uid)]);
+            	items.push([l('<img src='+ u.imagen.src +' style="border: solid 1px #FFFFFF; border-radius: 0%; width:100%; height:100%; z-index: -1;"></img><a href="#" style="position:absolute; left: 0%; bottom:4%; background-color: white; font-family: Source Sans Pro, sans-serif; font-size: 12px; text-decoration:none; color:#000000; border-radius: 0%;">&nbsp;'+ u.name +'</a>', 'perfil_de_usuario/' + u.uid)]);
             });
         	//io_drupalgap_table_populate("#usuarios_table", items);
           io_armar_galeria("#galeria", items);

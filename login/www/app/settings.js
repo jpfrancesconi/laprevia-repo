@@ -15,7 +15,7 @@ Drupal.settings.debug = true;
 /* Drupal Paths */
  
 // Site Path (do not use a trailing slash)
-Drupal.settings.site_path = 'http://192.168.1.101/laprevia'; // e.g. http://www.example.com
+Drupal.settings.site_path = 'http://192.168.1.107/laprevia'; // e.g. http://www.example.com
 
 // Default Services Endpoint Path
 Drupal.settings.endpoint = 'drupalgap';
@@ -62,7 +62,7 @@ drupalgap.settings.facebook = {
  *************/
 
 // App Title
-drupalgap.settings.title = 'La Previa JP';
+drupalgap.settings.title = 'La Previa FDD';
  
 // App Front Page
 drupalgap.settings.front = 'dashboard';
@@ -106,12 +106,14 @@ drupalgap.settings.loader = {
 
 //Drupal.modules.contrib['example'] = {};
 Drupal.modules.contrib['facebook'] = {};
+Drupal.modules.contrib['rate'] = {};
+Drupal.modules.contrib['votingapi'] = {};
 
 /** Custom Modules - www/app/modules/custom **/
 Drupal.modules.custom['galeria_de_usuarios'] = {};
 Drupal.modules.custom['perfil_de_usuario'] = {};
 Drupal.modules.custom['fotos_de_usuario'] = {};
-//Drupal.modules.custom['my_module'] = {};
+Drupal.modules.custom['muro'] = {};
 
 
 /***************************************|
@@ -225,12 +227,12 @@ drupalgap.settings.blocks.easystreet3 = {
     },
     main_menu: { }
   },
-  sub_header: {
-    title: { }
+  /*sub_header: {
+  	//title: { }
   },
   navigation: {
     primary_local_tasks: { }
-  },
+  },*/
   content: {
     messages: { },
     main: { }
@@ -247,80 +249,70 @@ drupalgap.settings.menus.regions = {}; // Do not remove this line.
 
 // Header Region Links
 drupalgap.settings.menus.regions['header'] = {
-  links:[
-    /* Main Menu Popup Menu Button */
-    {
-      options: {
-        popup: true,
-        popup_delta: 'main_menu',
-        attributes: {
-          'class': 'ui-btn-left',
-          'data-icon': 'bars'
-        }
-      }
-    },
-    /* Subir mis fotos */
-    {
-      path: 'node/add/foto',
-      options: {
-        attributes: {
-          'data-icon': 'grid',
-          'data-iconpos': 'notext',
-          'class': 'ui-btn-left'
-        }
-      },
-      pages: {
-        value: [''],
-        mode: 'exclude'
-      }
-    },
-    /* Home Button */
-    {
-      path: 'galeria_de_usuarios',
-      options: {
-        attributes: {
-          'data-icon': 'home',
-          'data-iconpos': 'notext',
-          'class': 'ui-btn-left'
-        }
-      },
-      pages: {
-        value: [''],
-        mode: 'exclude'
-      }
-    },
-    /* Anonymous User Popup Menu Button */
-    {
-      options: {
-        popup: true,
-        popup_delta: 'user_menu_anonymous',
-        attributes: {
-          'class': 'ui-btn-right',
-          'data-icon': 'user'
-        }
-      },
-      roles: {
-        value: ['anonymous user'],
-        mode: 'include',
-      }
-    },
-    /* Authenticated User Popup Menu Button */
-    {
-      options: {
-        popup: true,
-        popup_delta: 'user_menu_authenticated',
-        attributes: {
-          'class': 'ui-btn-right',
-          'data-icon': 'user'
-        }
-      },
-      roles: {
-        value: ['authenticated user'],
-        mode: 'include',
-      }
-    }
-  ]
-};
+		  links:[
+		    /* Subir Foto */
+		    {
+		      title: 'Foto',
+		      path: 'node/add/foto',
+		      options: {
+		        attributes: {
+		          'data-icon': 'plus',
+		          'class': 'ui-btn-left'
+		        }
+		      },
+		      pages: {
+		        value: [''],
+		        mode: 'exclude'
+		      }
+		    },
+		    /* Subir Foto */
+		    {
+		      title: 'Galeria',
+		      path: 'galeria_de_usuarios',
+		      options: {
+		        attributes: {
+		          'data-icon': 'grid',
+		          'class': 'ui-btn-left'
+		        }
+		      },
+		      pages: {
+		        value: [''],
+		        mode: 'exclude'
+		      }
+		    },
+		    /* Ir a la Galeriade Usuarios */
+		    {
+		      title: 'Muro',
+		      path: 'muro',
+		      options: {
+		        attributes: {
+		          'data-icon': 'bars',
+		          'class': 'ui-btn-left'
+		        }
+		      },
+		      pages: {
+		        value: [''],
+		        mode: 'exclude'
+		      }
+		    },
+		    /* Ir a al Muro general */
+		    {
+		      title: 'Perfil',
+		      path: 'node',/*path: 'user/%/edit',*/
+		      options: {
+		        attributes: {
+		          'data-icon': 'user',
+		          'class': 'ui-btn-right'
+		        }
+		      },
+		      pages: {
+		        value: [''],
+		        mode: 'exclude'
+		      }
+		    }
+
+		  ]
+		};
 
 // Footer Region Links
 drupalgap.settings.menus.regions['footer'] = {
