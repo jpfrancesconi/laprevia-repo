@@ -1179,24 +1179,32 @@ function io_armar_galeria(table_css_selector, rows) {
 }
 
 function io_armar_muro(table_css_selector, rows) {
-	try {
+	  try {
 
-		$(table_css_selector).html('');
+	    $(table_css_selector).html('');
 
-		for ( var i = 0; i < rows.length; i++) {
+	    // Se reciben 5 elementos para armar el estado a publicar
+	    // verificamos que tenga 5 elementos
+	    for (var i = 0; i < rows.length; i+=6) {
+	      var div_estado = '';  
+	      div_estado+= rows[i];
+	      div_estado+= rows[i+1];
+	      div_estado+= rows[i+2];
+	      div_estado+= rows[i+3];
+	      div_estado+= rows[i+4];
+	      div_estado+= rows[i+5];
+	      
+	      //agregamos lo construido al html
+	      $('<div id="'+ rows.length +'" class="estado" style="background-color: rgba(227,227,227,0.5); box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75); margin-bottom: 20px;">').html(div_estado).appendTo($(table_css_selector));
+	  
+	    }
+	    
 
-			// var div_contacto = '<div class="contacto"> ';
-			var div_foto = rows[i];
-			// div_contacto+= ' </div>';
 
-			$('<div class="c">').html(div_foto).appendTo($(table_css_selector));
-		}
-
-		$(table_css_selector).rebuild();
-	} catch (error) {
-		console.log('io_armar_muro - ' + error);
+	    $(table_css_selector).rebuild();
+	  }
+	  catch (error) { console.log('io_armar_muro - ' + error); }
 	}
-}
 
 function io_drupalgap_table_populate(table_css_selector, rows) {
 	try {
@@ -8024,7 +8032,7 @@ function theme_comments(variables) {
 		var html = '<div ' + drupalgap_attributes(variables.attributes) + '>';
 		// Show a comments title if there are any comments.
 		if (variables.node.comment_count > 0) {
-			html += '<h2 class="comments-title">Comments</h2>';
+			html += '<h4 class="comments-title">Comentarios</h4>';
 		}
 		// If the comments are already rendered, show them.
 		if (variables.comments) {
